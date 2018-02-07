@@ -1,12 +1,11 @@
 var express = require('express');
+var mssql = require('./msSqlServer');
 var app = express();
 var PORT = 3000;
 
 app.get('/', function (req, res) {
-    res.send('<h1>hello world</h1>');
+    mssql.getCityData(function (data) { res.send(data); });
 });
 
-app.listen(PORT, () => {
-    console.log('listening port ' + PORT)
-});
+app.listen(PORT, () => { console.log('listening port ' + PORT) });
 

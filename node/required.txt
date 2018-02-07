@@ -1,0 +1,7 @@
+npm install -g tsd
+
+tsd query node --action install
+
+npm install mssql -g
+
+tsd query mssql --action install
