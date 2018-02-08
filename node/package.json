@@ -15,6 +15,7 @@
     "fs": "0.0.1-security",
     "mssql": "^4.1.0",
     "ncu": "^0.2.1",
+    "node-schedule": "^1.3.0",
     "nodemailer": "^4.4.2",
     "tsd": "^0.6.5"
   },

@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 var data_layer = require('./databse_access_layer/data_layer');
+var sc = require("./schedule");
 var PORT = 3000;
 
 app.listen(PORT, () => { console.log('listening port ' + PORT); });
