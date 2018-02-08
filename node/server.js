@@ -15,3 +15,17 @@ app.post('/city', function (req, res) {
     var params = { CityID: req.body.CityID }
     data_layer.getCities(params, (response) => { res.status(response.status).json(response.data); });
 });
+
+app.get('/city', function (req, res) {
+    data_layer.getCities_spl((response) => { res.status(response.status).json(response.data); });
+});
+
+app.put('/city', function (req, res) {
+    var params = { CityID: req.body.CityID, CityName: req.body.CityName }
+    data_layer.getCities_insert__spl(params, (response) => { res.status(response.status).json(response.data); });
+});
+
+app.delete('/city', function (req, res) {
+    var params = { CityID: req.body.CityID }
+    data_layer.getCities_delete__spl(params, (response) => { res.status(response.status).json(response.data); });
+});
