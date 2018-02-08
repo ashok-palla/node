@@ -1,5 +1,7 @@
 var fs = require('fs');
 var file_path = './logger/log/';
+var mail = require('../nodemailer');
+
 module.exports.writeLog = function (msg) {
     var fileName = (new Date()).getFullYear() + '_' + (new Date()).getWeek() + '.log';
     fs.open(file_path + fileName, 'a', (err, fd) => {
@@ -18,6 +20,7 @@ module.exports.errorLog = function (msg) {
             if (err) throw err;
         });
     });
+    mail.sendMail({ to: "ashok_palla@merilytics.com", subject: "Error in LMS", text: JSON.stringify(msg) });
 };
 Date.prototype.getWeek = function () {
     var onejan = new Date(this.getFullYear(), 0, 1);
