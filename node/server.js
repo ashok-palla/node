@@ -1,12 +1,10 @@
 var express = require('express');
-var log = require('./log')
-var mssql = require('./msSqlServer');
+var log = require('./logger/log')
+var mssql = require('./business_layer/mssql');
 var app = express();
 var PORT = 3000;
-log.writeLog('this is first log.');
-// app.get('/', function (req, res) {
-//     mssql.getCityData(function (data) { res.send(data); });
-// });
+
+log.errorLog('this is first log.');
 
 app.listen(PORT, () => { console.log('listening port ' + PORT) });
 
