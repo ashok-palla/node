@@ -2,7 +2,7 @@ var sql = require("mssql");
 var log = require('../logger/log');
 var config = {
     user: 'sa',
-    password: '1234',
+    password: '123',
     server: 'localhost',
     database: 'CR'
 };

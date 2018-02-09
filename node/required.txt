@@ -5,3 +5,7 @@ tsd query node --action install
 npm install mssql -g
 
 tsd query mssql --action install
+
+
+Swagger:-
+npm install -g swagger
