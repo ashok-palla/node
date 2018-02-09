@@ -7,7 +7,9 @@ var data_layer = require('./databse_access_layer/data_layer');
 var sc = require("./schedule");
 var PORT = 3000;
 
-app.listen(PORT, () => { console.log('listening port ' + PORT); });
+app.listen(PORT, () => { 
+    // console.log('listening port ' + PORT); 
+});
 
 //The function is executed every time the app receives a request
 app.use(function (req, res, next) { next(); });
@@ -28,3 +30,5 @@ app.put('/city', function (req, res) {
 app.delete('/city', function (req, res) {
     data_layer.getCities_delete__spl(req.body, (response) => { res.status(response.status).json(response.data); });
 });
+
+module.exports.app = app;
