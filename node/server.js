@@ -22,11 +22,9 @@ app.get('/city', function (req, res) {
 });
 
 app.put('/city', function (req, res) {
-    var params = { CityID: req.body.CityID, CityName: req.body.CityName }
-    data_layer.getCities_insert__spl(params, (response) => { res.status(response.status).json(response.data); });
+    data_layer.getCities_insert__spl(req.body, (response) => { res.status(response.status).json(response.data); });
 });
 
 app.delete('/city', function (req, res) {
-    var params = { CityID: req.body.CityID }
-    data_layer.getCities_delete__spl(params, (response) => { res.status(response.status).json(response.data); });
+    data_layer.getCities_delete__spl(req.body, (response) => { res.status(response.status).json(response.data); });
 });

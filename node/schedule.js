@@ -22,4 +22,4 @@ var schedule = require('node-schedule');
 // │    └──────────────────── minute (0 - 59)
 // └───────────────────────── second (0 - 59, OPTIONAL)
 
-var j = schedule.scheduleJob('0 * * * * *', function(){ console.log('Time : ' + new Date()); });
+// var j = schedule.scheduleJob('0 * * * * *', function(){ console.log('Time : ' + new Date()); });
