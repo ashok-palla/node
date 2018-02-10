@@ -7,12 +7,32 @@ var data_layer = require('./databse_access_layer/data_layer');
 var sc = require("./schedule");
 var PORT = 3000;
 
-app.listen(PORT, () => { 
+app.listen(PORT, () => {
     // console.log('listening port ' + PORT); 
 });
 
 //The function is executed every time the app receives a request
-app.use(function (req, res, next) { next(); });
+app.use(function (req, res, next) {
+    if (req.url == '/login') { next(); }
+    else {
+        var auth = req.headers['x-auth'];
+        if (auth) {
+            data_layer.token_check({ token: auth }, (response) => {
+                if (response.status == 200) { next(); }
+                else { res.status(401).json(response.data); }
+            });
+        }
+        else { res.status(401).json('Unauthorization'); }
+    }
+});
+
+app.post('/login', function (req, res) {
+    var params = { email: req.body.email, password: req.body.password };
+    data_layer.authenticate(params, (response) => { 
+        if(response.status == 200) res.header("x-auth", req.body.password);
+        res.status(response.status).json(response.data); 
+    });
+});
 
 app.post('/city', function (req, res) {
     var params = { CityID: req.body.CityID }
